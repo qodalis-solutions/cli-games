@@ -1,0 +1,10 @@
+packages:
+  - packages/*
+
+strictPeerDependencies: false
+
+allowBuilds:
+  esbuild: true
+
+minimumReleaseAgeExclude:
+  - '@qodalis/cli-core@2.4.1'

@@ -1,0 +1,40 @@
+{
+  "name": "qodalis-cli-games",
+  "version": "2.4.1",
+  "private": true,
+  "description": "Terminal games for the Qodalis CLI: @qodalis/cli-2048, -minesweeper, -snake, -tetris, -wordle, -sudoku",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/qodalis-solutions/cli-games"
+  },
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "karma start karma.conf.cjs",
+    "lint": "eslint .",
+    "format": "prettier --write \"packages/*/src/**/*.ts\" \"packages/*/*.{json,ts}\" \"tools/**/*.js\" \"*.{json,mjs,cjs,ts}\"",
+    "inject-versions": "node tools/inject-versions.js",
+    "check-dist": "node tools/check-dist.js",
+    "release": "bash tools/release.sh"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@qodalis/cli-core": "^2.4.1",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^22.13.11",
+    "esbuild": "^0.28.2",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "jasmine-core": "~5.13.0",
+    "karma": "~6.4.4",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-esbuild": "^2.3.0",
+    "karma-jasmine": "~5.1.0",
+    "prettier": "^3.4.2",
+    "rxjs": "~7.8.0",
+    "tsup": "^9.0.0",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.0"
+  }
+}
