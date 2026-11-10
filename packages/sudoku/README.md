@@ -3,7 +3,7 @@
 Play Sudoku in the Qodalis CLI.
 
 [![npm version](https://img.shields.io/npm/v/@qodalis/cli-sudoku.svg)](https://www.npmjs.com/package/@qodalis/cli-sudoku)
-[![license](https://img.shields.io/npm/l/@qodalis/cli-sudoku.svg)](https://github.com/qodalis-solutions/web-cli/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@qodalis/cli-sudoku.svg)](https://github.com/qodalis-solutions/cli-games/blob/main/LICENSE)
 
 ## Install
 

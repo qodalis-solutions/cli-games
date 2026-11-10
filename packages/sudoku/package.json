@@ -6,9 +6,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/qodalis-solutions/web-cli"
+    "url": "https://github.com/qodalis-solutions/cli-games",
+    "directory": "packages/sudoku"
   },
-  "homepage": "https://qodalis.com",
+  "homepage": "https://cli.qodalis.com/docs/plugins/sudoku",
   "keywords": [
     "cli",
     "qodalis",
@@ -17,20 +18,30 @@
     "game",
     "puzzle"
   ],
-  "umd": "./umd/index.global.js",
-  "unpkg": "./umd/index.global.js",
-  "dependencies": {
-    "@qodalis/cli-core": "workspace:^"
-  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "sideEffects": false,
-  "main": "./public-api.js",
-  "module": "./public-api.mjs",
-  "types": "./public-api.d.ts",
+  "main": "./dist/public-api.js",
+  "module": "./dist/public-api.mjs",
+  "types": "./dist/public-api.d.ts",
+  "umd": "./dist/umd/index.global.js",
+  "unpkg": "./dist/umd/index.global.js",
   "exports": {
     ".": {
-      "types": "./public-api.d.ts",
-      "import": "./public-api.mjs",
-      "require": "./public-api.js"
+      "types": "./dist/public-api.d.ts",
+      "import": "./dist/public-api.mjs",
+      "require": "./dist/public-api.js"
     }
+  },
+  "scripts": {
+    "build": "tsup"
+  },
+  "peerDependencies": {
+    "@qodalis/cli-core": "^2.4.1"
+  },
+  "devDependencies": {
+    "@qodalis/cli-core": "^2.4.1"
   }
 }

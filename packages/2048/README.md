@@ -3,7 +3,7 @@
 Play the 2048 sliding-tile puzzle in the Qodalis CLI.
 
 [![npm version](https://img.shields.io/npm/v/@qodalis/cli-2048.svg)](https://www.npmjs.com/package/@qodalis/cli-2048)
-[![license](https://img.shields.io/npm/l/@qodalis/cli-2048.svg)](https://github.com/qodalis-solutions/web-cli/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@qodalis/cli-2048.svg)](https://github.com/qodalis-solutions/cli-games/blob/main/LICENSE)
 
 ## Install
 

@@ -1,17 +1,17 @@
 import { defineConfig } from 'tsup';
-import { sharedConfig } from '../../../tsup.shared';
+import { sharedConfig } from '../../tsup.shared';
 
 export default defineConfig([
     {
         ...sharedConfig,
         entry: ['src/public-api.ts'],
-        outDir: '../../../dist/2048',
+        outDir: 'dist',
         external: ['@qodalis/cli-core'],
     },
     {
         entry: { index: 'src/cli-entrypoint.ts' },
         format: ['iife'],
-        outDir: '../../../dist/2048/umd',
+        outDir: 'dist/umd',
         globalName: 'game2048',
         platform: 'browser',
         external: [],

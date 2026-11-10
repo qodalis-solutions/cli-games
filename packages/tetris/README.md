@@ -3,7 +3,7 @@
 Play the classic Tetris game in the Qodalis CLI.
 
 [![npm version](https://img.shields.io/npm/v/@qodalis/cli-tetris.svg)](https://www.npmjs.com/package/@qodalis/cli-tetris)
-[![license](https://img.shields.io/npm/l/@qodalis/cli-tetris.svg)](https://github.com/qodalis-solutions/web-cli/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@qodalis/cli-tetris.svg)](https://github.com/qodalis-solutions/cli-games/blob/main/LICENSE)
 
 ## Install
 

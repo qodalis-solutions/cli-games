@@ -3,7 +3,7 @@
 Play Minesweeper in the Qodalis CLI.
 
 [![npm version](https://img.shields.io/npm/v/@qodalis/cli-minesweeper.svg)](https://www.npmjs.com/package/@qodalis/cli-minesweeper)
-[![license](https://img.shields.io/npm/l/@qodalis/cli-minesweeper.svg)](https://github.com/qodalis-solutions/web-cli/blob/main/LICENSE)
+[![license](https://img.shields.io/npm/l/@qodalis/cli-minesweeper.svg)](https://github.com/qodalis-solutions/cli-games/blob/main/LICENSE)
 
 ## Install
 
