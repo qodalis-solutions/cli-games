@@ -1,0 +1,59 @@
+name: Build CLI Games CI
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+  push:
+    branches:
+      - develop
+  # Run CI on a branch by hand, e.g. when GitHub dropped a push event
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: latest
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      # A change that bumps the version must bring its CHANGELOG.md section (it becomes the GitHub release)
+      - name: Release notes in CHANGELOG.md
+        run: |
+          BASE=${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'HEAD~1' }}
+          OLD=$(git show "$BASE:packages/2048/package.json" 2>/dev/null | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version" || echo "")
+          NEW=$(node -p "require('./packages/2048/package.json').version")
+          if [ "$OLD" != "$NEW" ]; then node tools/release-notes.js --check; else echo "Version unchanged ($NEW)."; fi
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Check build output
+        run: node tools/check-dist.js
+
+      - name: Test (Karma, ChromeHeadless)
+        env:
+          CI: "1"
+        run: pnpm test
