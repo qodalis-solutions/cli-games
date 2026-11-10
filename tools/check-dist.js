@@ -6,8 +6,10 @@
  *
  * For each packages/<game>: dist/public-api.{js,mjs,d.ts,d.mts} and
  * dist/umd/index.global.js exist, and main/module/types/umd/unpkg/exports
- * of package.json point at existing files. Exits with 1 on the first
- * missing file so a broken build never reaches `npm publish`.
+ * of package.json point at existing files, and every package has the
+ * version of packages/2048 (the games share one version; the release
+ * tag and notes read only that package). Exits with 1 on any problem so
+ * a broken or half-bumped build never reaches `npm publish`.
  */
 const fs = require("fs");
 const path = require("path");
@@ -30,10 +32,17 @@ function entryPoints(pkg) {
 }
 
 let failed = false;
+const expectedVersion = JSON.parse(
+  fs.readFileSync(path.join(packagesDir, "2048", "package.json"), "utf8"),
+).version;
 for (const name of fs.readdirSync(packagesDir).sort()) {
   const dir = path.join(packagesDir, name);
   if (!fs.existsSync(path.join(dir, "package.json"))) continue;
   const pkg = JSON.parse(fs.readFileSync(path.join(dir, "package.json"), "utf8"));
+  if (pkg.version !== expectedVersion) {
+    failed = true;
+    console.error(`${pkg.name}: version ${pkg.version}, but packages/2048 is ${expectedVersion} (all games share one version)`);
+  }
   const missing = [...new Set([...OUTPUTS, ...entryPoints(pkg)])].filter(
     (file) => !fs.existsSync(path.join(dir, file)),
   );

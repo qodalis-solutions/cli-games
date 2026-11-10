@@ -38,9 +38,10 @@ Each package's README documents its commands and keys; the docs site has a page 
 pnpm install
 pnpm run build          # tsup in every package: dist/public-api.{js,mjs,d.ts} + dist/umd/index.global.js
 pnpm test               # Jasmine specs on Karma ChromeHeadless (CI=1 adds --no-sandbox)
-pnpm run lint           # ESLint 9 flat config
+pnpm run lint           # ESLint flat config
+pnpm run typecheck      # tsc over sources and specs (Karma only strips types)
 pnpm run format         # Prettier
-node tools/check-dist.js   # every entry point of every package.json exists after a build
+node tools/check-dist.js   # every entry point of every package.json exists after a build, and all six versions match
 ```
 
 Layout: `packages/<game>/` with `src/public-api.ts` (the module and processor), `src/cli-entrypoint.ts` (the IIFE entry that calls `bootCliModule`), `src/lib/`, `src/tests/*.spec.ts`. No Nx: `pnpm -r run build` builds the packages.

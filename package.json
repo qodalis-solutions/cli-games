@@ -12,6 +12,7 @@
     "build": "pnpm -r run build",
     "test": "karma start karma.conf.cjs",
     "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.spec.json --noEmit",
     "format": "prettier --write \"packages/*/src/**/*.ts\" \"packages/*/*.{json,ts}\" \"tools/**/*.js\" \"*.{json,mjs,cjs,ts}\"",
     "inject-versions": "node tools/inject-versions.js",
     "check-dist": "node tools/check-dist.js",

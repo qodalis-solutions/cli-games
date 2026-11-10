@@ -13,8 +13,9 @@ pnpm install
 pnpm run build             # pnpm -r run build (tsup per package)
 pnpm test                  # karma start karma.conf.cjs (Jasmine, ChromeHeadless, single run)
 pnpm run lint              # eslint .
+pnpm run typecheck         # tsc -p tsconfig.spec.json --noEmit (sources + specs)
 pnpm run format            # prettier --write
-node tools/check-dist.js   # verify every package's dist and entry points
+node tools/check-dist.js   # verify every package's dist, entry points and that all six versions match
 node tools/inject-versions.js
 ```
 

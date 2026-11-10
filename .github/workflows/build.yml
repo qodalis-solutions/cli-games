@@ -47,6 +47,10 @@ jobs:
       - name: Lint
         run: pnpm run lint
 
+      # Karma bundles the specs with esbuild, which strips types without checking them
+      - name: Type-check sources and specs
+        run: pnpm run typecheck
+
       - name: Build
         run: pnpm run build
 
