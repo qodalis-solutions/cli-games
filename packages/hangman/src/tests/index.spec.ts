@@ -191,6 +191,15 @@ describe('CliHangmanCommandProcessor', () => {
         expect(context.exitFullScreenMode).toHaveBeenCalled();
     });
 
+    it('draws missed letters in red, struck through, not dimmed', async () => {
+        const { p, context } = await startWith('penguin');
+        await p.onData('z', context);
+        const frame = context.terminal.write.calls.mostRecent().args[0];
+        // The alphabet's Z: red and struck through, readable on any theme
+        expect(frame).toContain('\x1b[31m\x1b[9mZ\x1b[0m');
+        expect(frame).not.toContain('\x1b[2mZ');
+    });
+
     it('starts a new game with Enter once the game has ended', async () => {
         const { p, internal, context } = await startWith('penguin');
         await type(p, context, 'penguin');

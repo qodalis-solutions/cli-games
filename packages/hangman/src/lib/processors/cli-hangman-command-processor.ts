@@ -35,6 +35,8 @@ const ansi = {
     fg: {
         green: `${CSI}92m`,
         red: `${CSI}91m`,
+        // Normal red: readable on dark and light themes
+        darkRed: `${CSI}31m`,
         yellow: `${CSI}93m`,
         cyan: `${CSI}36m`,
         white: `${CSI}97m`,
@@ -42,6 +44,7 @@ const ansi = {
     },
     bold: `${CSI}1m`,
     dim: `${CSI}2m`,
+    strike: `${CSI}9m`,
     inverse: `${CSI}7m`,
     reset: `${CSI}0m`,
 };
@@ -525,10 +528,11 @@ export class CliHangmanCommandProcessor implements ICliCommandProcessor {
         const selected = !over && index === this.cursor;
         let color = ansi.fg.white;
         if (this.game.hasGuessed(letter)) {
-            // Hits in green, misses dimmed
+            // Hits in green, misses struck through in red (dim grey was
+            // unreadable on dark themes)
             color = this.game.word.includes(letter.toLowerCase())
                 ? ansi.fg.green
-                : ansi.fg.gray + ansi.dim;
+                : ansi.fg.darkRed + ansi.strike;
         }
         const style = selected ? ansi.inverse + ansi.bold : '';
         return `${style}${color}${letter}${ansi.reset}`;
