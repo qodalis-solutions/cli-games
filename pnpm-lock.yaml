@@ -75,7 +75,19 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
 
+  packages/fifteen-puzzle:
+    devDependencies:
+      '@qodalis/cli-core':
+        specifier: ^2.4.1
+        version: 2.4.1
+
   packages/hangman:
+    devDependencies:
+      '@qodalis/cli-core':
+        specifier: ^2.4.1
+        version: 2.4.1
+
+  packages/mastermind:
     devDependencies:
       '@qodalis/cli-core':
         specifier: ^2.4.1
