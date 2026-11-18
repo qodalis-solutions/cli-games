@@ -1,6 +1,6 @@
 {
   "name": "qodalis-cli-games",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "private": true,
   "description": "Terminal games for the Qodalis CLI: @qodalis/cli-2048, -minesweeper, -snake, -tetris, -wordle, -sudoku, -connect-four, -hangman, -fifteen-puzzle, -mastermind",
   "license": "MIT",

@@ -1,10 +1,11 @@
 # Change Log
 
 This document records all notable changes to the Qodalis CLI game plugins
-(`@qodalis/cli-2048`, `-minesweeper`, `-snake`, `-tetris`, `-wordle`, `-sudoku`).
+(`@qodalis/cli-2048`, `-minesweeper`, `-snake`, `-tetris`, `-wordle`, `-sudoku`,
+`-connect-four`, `-hangman`, `-fifteen-puzzle`, `-mastermind`).
 This project adheres to [Semantic Versioning](https://semver.org/); every game shares one version.
 
-## Unreleased
+## v2.4.3
 
 ### New games
 
