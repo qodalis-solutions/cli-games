@@ -6,7 +6,9 @@ Terminal games for the [Qodalis CLI](https://github.com/qodalis-solutions/web-cl
 | --- | --- | --- | --- |
 | [`@qodalis/cli-2048`](https://www.npmjs.com/package/@qodalis/cli-2048) | `game2048Module` | `2048` | The 2048 sliding-tile puzzle |
 | [`@qodalis/cli-connect-four`](https://www.npmjs.com/package/@qodalis/cli-connect-four) | `connectFourModule` | `connect-four` | Connect Four against the computer |
+| [`@qodalis/cli-fifteen-puzzle`](https://www.npmjs.com/package/@qodalis/cli-fifteen-puzzle) | `fifteenPuzzleModule` | `fifteen` | The 15-puzzle (sliding tiles, 3x3 to 5x5) |
 | [`@qodalis/cli-hangman`](https://www.npmjs.com/package/@qodalis/cli-hangman) | `hangmanModule` | `hangman` | Hangman |
+| [`@qodalis/cli-mastermind`](https://www.npmjs.com/package/@qodalis/cli-mastermind) | `mastermindModule` | `mastermind` | Mastermind (break a 4-colour code) |
 | [`@qodalis/cli-minesweeper`](https://www.npmjs.com/package/@qodalis/cli-minesweeper) | `minesweeperModule` | `minesweeper` | Minesweeper |
 | [`@qodalis/cli-snake`](https://www.npmjs.com/package/@qodalis/cli-snake) | `snakeModule` | `snake` | Snake |
 | [`@qodalis/cli-sudoku`](https://www.npmjs.com/package/@qodalis/cli-sudoku) | `sudokuModule` | `sudoku` | Sudoku |
