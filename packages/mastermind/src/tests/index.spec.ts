@@ -232,6 +232,17 @@ describe('CliMastermindCommandProcessor', () => {
         expect(context.state.persist).toHaveBeenCalled();
     });
 
+    it("saves the stats to the command's store, not the engine's", async () => {
+        const { processor, context, state$ } = await startWith([1, 1, 2, 2]);
+        // Keys reach onData with the engine's context, whose state is the
+        // shared store (initialize reads the command's own store)
+        const engine = createContext();
+        const engineContext = { ...context, state: engine.context.state };
+        await type(processor, engineContext, '1122' + ENTER);
+        expect(state$.value['mastermindStats'].gamesWon).toBe(1);
+        expect(engine.context.state.updateState).not.toHaveBeenCalled();
+    });
+
     it('keeps a better best score', async () => {
         const { processor, context, state$ } = await startWith([1, 1, 2, 2], {
             mastermindStats: { gamesPlayed: 4, gamesWon: 3, bestGuesses: 1 },

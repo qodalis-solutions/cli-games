@@ -177,6 +177,7 @@ export class CliMastermindCommandProcessor implements ICliCommandProcessor {
     private gameWon = false;
     private message = '';
     private stats: MastermindStats = emptyStats();
+    private context: ICliExecutionContext | null = null;
 
     // Layout
     private offsetX = 0;
@@ -202,6 +203,7 @@ export class CliMastermindCommandProcessor implements ICliCommandProcessor {
         _command: CliProcessCommand,
         context: ICliExecutionContext,
     ): Promise<void> {
+        this.context = context;
         this.startGame(context);
     }
 
@@ -369,6 +371,7 @@ export class CliMastermindCommandProcessor implements ICliCommandProcessor {
 
     private stopGame(context: ICliExecutionContext): void {
         context.exitFullScreenMode();
+        this.context = null;
     }
 
     onResize(cols: number, rows: number, context: ICliExecutionContext): void {
@@ -458,8 +461,11 @@ export class CliMastermindCommandProcessor implements ICliCommandProcessor {
             }
         }
         this.stats = stats;
-        context.state.updateState({ mastermindStats: { ...stats } });
-        await context.state.persist();
+        // onData gets the engine's context, whose state is the shared store:
+        // save to this command's store, where initialize reads it
+        const state = (this.context ?? context).state;
+        state.updateState({ mastermindStats: { ...stats } });
+        await state.persist();
     }
 
     private handleGameOverInput(
