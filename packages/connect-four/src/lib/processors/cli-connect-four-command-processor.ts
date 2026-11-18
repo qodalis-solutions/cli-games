@@ -505,6 +505,7 @@ export class CliConnectFourCommandProcessor implements ICliCommandProcessor {
         switch (data) {
             case 'r':
             case 'R':
+            case '\r':
                 // Take turns starting
                 this.playerStarts = !this.playerStarts;
                 this.computeLayout(context);
