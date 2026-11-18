@@ -1,6 +1,6 @@
 {
   "name": "@qodalis/cli-fifteen-puzzle",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "@qodalis/cli extension for playing the 15-puzzle (sliding tiles) in the terminal.",
   "author": "Nicolae Lupei, Qodalis Solutions",
   "license": "MIT",
