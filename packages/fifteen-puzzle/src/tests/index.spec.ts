@@ -276,6 +276,20 @@ describe('CliFifteenPuzzleCommandProcessor', () => {
         expect(context.state.persist).toHaveBeenCalled();
     });
 
+    it("saves the best result to the command's store, not the engine's", async () => {
+        const { processor, context, state$ } = await startWith(ONE_FROM_SOLVED);
+        // Keys reach onData with the engine's context, whose state is the
+        // shared store (initialize reads the command's own store)
+        const engine = createContext();
+        const engineContext = { ...context, state: engine.context.state };
+        await processor.onData(LEFT, engineContext);
+        await Promise.resolve();
+        expect(state$.value['fifteenPuzzleBest']['4']).toEqual(
+            jasmine.objectContaining({ moves: 1 }),
+        );
+        expect(engine.context.state.updateState).not.toHaveBeenCalled();
+    });
+
     it('keeps the better of the old and new results per size', async () => {
         const { processor, context, state$ } = await startWith(
             ONE_FROM_SOLVED,

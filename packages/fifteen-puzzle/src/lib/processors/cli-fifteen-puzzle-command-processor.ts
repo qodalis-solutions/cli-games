@@ -441,8 +441,11 @@ export class CliFifteenPuzzleCommandProcessor implements ICliCommandProcessor {
                 ...this.best,
                 [key]: { moves, time, date: new Date().toLocaleDateString() },
             };
-            context.state.updateState({ fifteenPuzzleBest: this.best });
-            await context.state.persist();
+            // onData gets the engine's context, whose state is the shared
+            // store: save to this command's store, where initialize reads it
+            const state = (this.context ?? context).state;
+            state.updateState({ fifteenPuzzleBest: this.best });
+            await state.persist();
         }
     }
 
