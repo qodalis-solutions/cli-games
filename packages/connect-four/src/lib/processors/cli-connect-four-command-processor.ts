@@ -234,6 +234,12 @@ export class CliConnectFourCommandProcessor implements ICliCommandProcessor {
             case 'S':
                 this.playerMove(this.cursorCol);
                 break;
+            case 'r':
+            case 'R':
+                // New game, same player first (the R key of touch pads)
+                this.computeLayout(context);
+                this.resetGameState();
+                break;
             case 'q':
             case 'Q':
             case ESC:
@@ -282,7 +288,7 @@ export class CliConnectFourCommandProcessor implements ICliCommandProcessor {
             `  ${writer.wrapInColor('1-7', CliForegroundColor.Yellow)}                Drop a disc in that column`,
         );
         writer.writeln(
-            `  ${writer.wrapInColor('R', CliForegroundColor.Yellow)}                  Restart (after game over)`,
+            `  ${writer.wrapInColor('R', CliForegroundColor.Yellow)}                  New game`,
         );
         writer.writeln(
             `  ${writer.wrapInColor('Esc / Q', CliForegroundColor.Yellow)}            Quit game`,

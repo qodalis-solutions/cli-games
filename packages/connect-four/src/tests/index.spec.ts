@@ -262,6 +262,18 @@ describe('CliConnectFourCommandProcessor', () => {
         expect(context.exitFullScreenMode).toHaveBeenCalled();
     });
 
+    it('starts a new game with R during a game, the player still first', async () => {
+        const { p, internal, context, state$ } = await start();
+        await p.onData('4', context);
+        expect(discs(internal.board)).toBe(2);
+
+        await p.onData('r', context);
+        expect(discs(internal.board)).toBe(0);
+        expect(internal.outcome).toBeNull();
+        // An abandoned game is not counted
+        expect(state$.value['connectFourStats'].losses).toBe(0);
+    });
+
     it('starts a game at the chosen difficulty', async () => {
         const p = new CliConnectFourCommandProcessor();
         const { context } = createContext();

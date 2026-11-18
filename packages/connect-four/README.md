@@ -73,7 +73,7 @@ The board is 29 columns wide, so it fits a phone terminal.
 | `Enter`, `Space` or `↓` | Drop a disc in the chosen column |
 | `1`-`7` | Drop a disc in that column |
 | `Esc` / `Q` | Quit |
-| `R` | Play again (after the game ends) |
+| `R` | New game (during a game or after it ends) |
 
 On touch screens, swipe left or right to choose a column and tap to drop; the key row also has the column numbers.
 
