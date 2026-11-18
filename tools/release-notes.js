@@ -63,7 +63,7 @@ function main() {
   }
 
   const links = [
-    `**npm:** [\`@qodalis/cli-2048@${version}\`](https://www.npmjs.com/package/@qodalis/cli-2048/v/${version}) and the other game packages (\`-minesweeper\`, \`-snake\`, \`-tetris\`, \`-wordle\`, \`-sudoku\`) at ${version}`,
+    `**npm:** [\`@qodalis/cli-2048@${version}\`](https://www.npmjs.com/package/@qodalis/cli-2048/v/${version}) and the other game packages (\`-minesweeper\`, \`-snake\`, \`-tetris\`, \`-wordle\`, \`-sudoku\`, \`-connect-four\`, \`-hangman\`, \`-fifteen-puzzle\`, \`-mastermind\`) at ${version}`,
   ];
   const previous = previousArg
     ? previousArg.slice("--previous=".length).replace(/^v/, "")

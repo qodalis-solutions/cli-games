@@ -45,7 +45,7 @@ pnpm test               # Jasmine specs on Karma ChromeHeadless (CI=1 adds --no-
 pnpm run lint           # ESLint flat config
 pnpm run typecheck      # tsc over sources and specs (Karma only strips types)
 pnpm run format         # Prettier
-node tools/check-dist.js   # every entry point of every package.json exists after a build, and all six versions match
+node tools/check-dist.js   # every entry point of every package.json exists after a build, and all versions match
 ```
 
 Layout: `packages/<game>/` with `src/public-api.ts` (the module and processor), `src/cli-entrypoint.ts` (the IIFE entry that calls `bootCliModule`), `src/lib/`, `src/tests/*.spec.ts`. No Nx: `pnpm -r run build` builds the packages.
