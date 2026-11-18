@@ -274,6 +274,25 @@ describe('CliConnectFourCommandProcessor', () => {
         expect(state$.value['connectFourStats'].losses).toBe(0);
     });
 
+    it('starts a new game with Enter once the game has ended', async () => {
+        const { p, internal, context } = await start();
+        internal.board = boardOf(
+            '.......',
+            '.......',
+            '.......',
+            '.......',
+            '....OO.',
+            'XXX.OO.',
+        );
+        await p.onData('4', context);
+        expect(internal.outcome).toBe('win');
+
+        await p.onData('\r', context);
+        expect(internal.outcome).toBeNull();
+        // The computer opens the next game
+        expect(discs(internal.board)).toBe(1);
+    });
+
     it('starts a game at the chosen difficulty', async () => {
         const p = new CliConnectFourCommandProcessor();
         const { context } = createContext();

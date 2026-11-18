@@ -191,6 +191,16 @@ describe('CliHangmanCommandProcessor', () => {
         expect(context.exitFullScreenMode).toHaveBeenCalled();
     });
 
+    it('starts a new game with Enter once the game has ended', async () => {
+        const { p, internal, context } = await startWith('penguin');
+        await type(p, context, 'penguin');
+        expect(internal.game.won).toBeTrue();
+
+        await p.onData('\r', context);
+        expect(internal.game.over).toBeFalse();
+        expect(internal.game.guesses).toEqual([]);
+    });
+
     it('"stats" prints games, win percentage and streaks', async () => {
         const p = new CliHangmanCommandProcessor();
         const { context, out } = createContext({

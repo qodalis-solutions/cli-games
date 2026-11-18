@@ -238,7 +238,7 @@ export class CliHangmanCommandProcessor implements ICliCommandProcessor {
             `  ${writer.wrapInColor('Esc', CliForegroundColor.Yellow)}                Quit game`,
         );
         writer.writeln(
-            `  ${writer.wrapInColor('R', CliForegroundColor.Yellow)}                  Restart (after game over)`,
+            `  ${writer.wrapInColor('R / Enter', CliForegroundColor.Yellow)}          Restart (after game over)`,
         );
     }
 
@@ -396,6 +396,7 @@ export class CliHangmanCommandProcessor implements ICliCommandProcessor {
         switch (data) {
             case 'r':
             case 'R':
+            case '\r':
                 this.computeLayout(context);
                 this.resetGameState();
                 this.render(context);

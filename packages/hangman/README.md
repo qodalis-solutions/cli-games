@@ -66,7 +66,7 @@ Guess a random English word from the built-in list of 180 words (animals, food, 
 | `←` `→` `↑` `↓` | Select a letter on the on-screen alphabet |
 | `Enter` / `Space` | Guess the selected letter |
 | `Esc` | Quit |
-| `R` | Play again (after the game ends) |
+| `R` / `Enter` | Play again (after the game ends) |
 | `Q` | Quit (after the game ends) |
 
 During a game only `Esc` quits, since `Q` is a letter. On touch screens, type on the on-screen keyboard, or select a letter with the arrow keys above it and press GUESS.
