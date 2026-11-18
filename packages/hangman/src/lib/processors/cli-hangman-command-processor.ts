@@ -84,9 +84,9 @@ export class CliHangmanCommandProcessor implements ICliCommandProcessor {
     };
 
     controls: ICliCommandControls = {
+        // No tap or swipe: on touch screens a touch on the terminal brings
+        // the keyboard back, it must not guess the selected letter
         textInput: true,
-        swipe: true,
-        tap: CliKeyData.enter,
         keys: [
             {
                 label: 'ESC',
