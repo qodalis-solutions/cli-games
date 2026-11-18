@@ -663,10 +663,13 @@ export class CliMinesweeperCommandProcessor implements ICliCommandProcessor {
         const currentBest = this.bestTimes[this.difficulty];
         if (currentBest === null || this.elapsedSeconds < currentBest) {
             this.bestTimes[this.difficulty] = this.elapsedSeconds;
-            context.state.updateState({
+            // onData gets the engine's context, whose state is the shared
+            // store: save to this command's store, where initialize reads it
+            const state = (this.context ?? context).state;
+            state.updateState({
                 minesweeperBestTimes: { ...this.bestTimes },
             });
-            await context.state.persist();
+            await state.persist();
         }
 
         this.render(context);

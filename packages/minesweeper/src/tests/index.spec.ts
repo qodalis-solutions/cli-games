@@ -282,6 +282,21 @@ describe('CliMinesweeperCommandProcessor', () => {
         expect(context.state.persist).toHaveBeenCalled();
     });
 
+    it("saves the best time to the command's store, not the engine's", async () => {
+        const { p, internal, context, state$ } = await start();
+        setBoard(internal, 3, 3, [[0, 0]]);
+        internal.cursorRow = 2;
+        internal.cursorCol = 2;
+        // Keys reach onData with the engine's context, whose state is the
+        // shared store (initialize reads the command's own store)
+        const engine = createContext();
+        await p.onData(ENTER, { ...context, state: engine.context.state });
+
+        expect(internal.gameWon).toBeTrue();
+        expect(state$.value['minesweeperBestTimes'].easy).not.toBeNull();
+        expect(engine.context.state.updateState).not.toHaveBeenCalled();
+    });
+
     it('does not overwrite a better best time', async () => {
         spyOn(Date, 'now').and.returnValue(100_000);
         const { p, internal, context } = await start(undefined, {
