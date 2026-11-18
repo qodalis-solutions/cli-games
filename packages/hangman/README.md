@@ -69,7 +69,7 @@ Guess a random English word from the built-in list of 180 words (animals, food, 
 | `R` | Play again (after the game ends) |
 | `Q` | Quit (after the game ends) |
 
-During a game only `Esc` quits, since `Q` is a letter. On touch screens, type on the on-screen keyboard, or swipe to select a letter and tap to guess it.
+During a game only `Esc` quits, since `Q` is a letter. On touch screens, type on the on-screen keyboard, or select a letter with the arrow keys above it and press GUESS.
 
 Statistics (games played, wins, current and best streak) are kept in the terminal state and persisted between sessions.
 

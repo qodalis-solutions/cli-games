@@ -31,4 +31,12 @@ describe('hangman controls', () => {
             }
         }
     });
+
+    it('a touch on the screen never guesses: the game reads typed letters', () => {
+        // Touch hosts send `tap` for a touch on the terminal and arrows for
+        // swipes; Hangman keeps the on-screen keyboard instead
+        expect(processor.controls?.textInput).toBeTrue();
+        expect(processor.controls?.tap).toBeUndefined();
+        expect(processor.controls?.swipe).toBeFalsy();
+    });
 });
