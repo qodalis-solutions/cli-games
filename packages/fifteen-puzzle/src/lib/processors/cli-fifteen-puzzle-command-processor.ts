@@ -434,13 +434,16 @@ export class CliFifteenPuzzleCommandProcessor implements ICliCommandProcessor {
         this.newRecord =
             !current || moves < current.moves || time < current.time;
 
-        this.render(context);
-
         if (this.newRecord) {
             this.best = {
                 ...this.best,
                 [key]: { moves, time, date: new Date().toLocaleDateString() },
             };
+        }
+        // After the record is set, so the HUD's best shows it
+        this.render(context);
+
+        if (this.newRecord) {
             // onData gets the engine's context, whose state is the shared
             // store: save to this command's store, where initialize reads it
             const state = (this.context ?? context).state;

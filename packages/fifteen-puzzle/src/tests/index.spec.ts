@@ -290,6 +290,15 @@ describe('CliFifteenPuzzleCommandProcessor', () => {
         expect(engine.context.state.updateState).not.toHaveBeenCalled();
     });
 
+    it('shows the new record on the win screen', async () => {
+        const { processor, context } = await startWith(ONE_FROM_SOLVED);
+        await processor.onData(LEFT, context);
+        const screen: string =
+            context.terminal.write.calls.mostRecent().args[0];
+        expect(screen).toContain('1 moves');
+        expect(screen).toContain('New record!');
+    });
+
     it('keeps the better of the old and new results per size', async () => {
         const { processor, context, state$ } = await startWith(
             ONE_FROM_SOLVED,
