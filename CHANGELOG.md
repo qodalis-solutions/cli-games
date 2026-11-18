@@ -14,6 +14,10 @@ This project adheres to [Semantic Versioning](https://semver.org/); every game s
 - **Mastermind** (`@qodalis/cli-mastermind`, command `mastermind`): break a code of 4 colours from 6 (repeats allowed) in 10 guesses, with exact and partial feedback. Type digits 1-6, or pick slots and colours with the arrow keys or swipes. Games, wins and the fewest guesses are saved (`mastermind stats`, `mastermind reset`).
 - All four fit a 40-column terminal and are translated into the ten languages of the other games.
 
+### Fixes
+
+- **Minesweeper** and **Sudoku**: best times survive a reload again. They were saved to the terminal's shared state instead of the game's own, so `minesweeper scores` and `sudoku scores` came back empty after the page was reloaded.
+
 ## v2.4.2
 
 ### The games moved to their own repository
