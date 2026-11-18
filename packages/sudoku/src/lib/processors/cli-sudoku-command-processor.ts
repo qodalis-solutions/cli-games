@@ -726,10 +726,13 @@ export class CliSudokuCommandProcessor implements ICliCommandProcessor {
                 time: this.elapsedSeconds,
                 date: new Date().toLocaleDateString(),
             };
-            context.state.updateState({
+            // onData gets the engine's context, whose state is the shared
+            // store: save to this command's store, where initialize reads it
+            const state = (this.context ?? context).state;
+            state.updateState({
                 sudokuBestTimes: { ...this.bestTimes },
             });
-            await context.state.persist();
+            await state.persist();
         }
 
         this.render(context);
