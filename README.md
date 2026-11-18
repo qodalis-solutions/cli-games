@@ -5,6 +5,8 @@ Terminal games for the [Qodalis CLI](https://github.com/qodalis-solutions/web-cl
 | Package | Module | Command | Game |
 | --- | --- | --- | --- |
 | [`@qodalis/cli-2048`](https://www.npmjs.com/package/@qodalis/cli-2048) | `game2048Module` | `2048` | The 2048 sliding-tile puzzle |
+| [`@qodalis/cli-connect-four`](https://www.npmjs.com/package/@qodalis/cli-connect-four) | `connectFourModule` | `connect-four` | Connect Four against the computer |
+| [`@qodalis/cli-hangman`](https://www.npmjs.com/package/@qodalis/cli-hangman) | `hangmanModule` | `hangman` | Hangman |
 | [`@qodalis/cli-minesweeper`](https://www.npmjs.com/package/@qodalis/cli-minesweeper) | `minesweeperModule` | `minesweeper` | Minesweeper |
 | [`@qodalis/cli-snake`](https://www.npmjs.com/package/@qodalis/cli-snake) | `snakeModule` | `snake` | Snake |
 | [`@qodalis/cli-sudoku`](https://www.npmjs.com/package/@qodalis/cli-sudoku) | `sudokuModule` | `sudoku` | Sudoku |
